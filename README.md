@@ -15,3 +15,6 @@ cleanUI - An Angular client application that listens on localhost:4200.  To inst
 
 
 Then open localhost:4200 in a browser.
+
+Click "Clean File" button with the default filename of ../data/normal.csv to clean the normal.csv file located in the data directory.
+Change filename to ../data/advanced.csv and click "Clean File" button to clean the advaced.csv file.
