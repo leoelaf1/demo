@@ -1,0 +1,107 @@
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+
+<div>
+Filename: <input
+  [(ngModel)]="filename"
+  type="text"
+  class="freetext-input"
+ >
+  <button (click)="cleanFile($event)" >Clean File</button>
+
+</div>
+
+<div *ngIf="cleanData">
+  <p></p>
+  {{cleanData.duplicateGroups.length}} Duplicate Groups
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Record Number</th>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Company Name</th>
+          <th>Address1</th>
+          <th>Address2</th>
+          <th>Zip</th>
+          <th>City</th>
+          <th>State Long</th>
+          <th>State</th>
+          <th>Phone</th>
+          <th>Duplicates</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let dupGroup of cleanData.duplicateGroups">
+        <tr *ngFor="let dup of dupGroup.duplicates">
+          <td>{{dup.recordNumber}} </td>
+          <td>{{dup.id}} </td>
+          <td>{{dup.firstName}} </td>
+          <td>{{dup.lastName}} </td>
+          <td>{{dup.email}} </td>
+          <td>{{dup.companyName}} </td>
+          <td>{{dup.address1}} </td>
+          <td>{{dup.address2}} </td>
+          <td>{{dup.zip}} </td>
+          <td>{{dup.city}} </td>
+          <td>{{dup.stateLong}} </td>
+          <td>{{dup.state}} </td>
+          <td>{{dup.phone}} </td>
+          <td><span *ngFor="let dupid of dup.duplicates">{{dupid}} </span></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p></p>
+  {{cleanData.nonDuplicates.length}} Non Duplicates
+  <div *ngIf = "cleanData.nonDuplicates.length > 0">
+    <!-- TODO create component for table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Record Number</th>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Company Name</th>
+          <th>Address1</th>
+          <th>Address2</th>
+          <th>Zip</th>
+          <th>City</th>
+          <th>State Long</th>
+          <th>State</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let dup of cleanData.nonDuplicates">
+        <tr>
+          <td>{{dup.recordNumber}} </td>
+          <td>{{dup.id}} </td>
+          <td>{{dup.firstName}} </td>
+          <td>{{dup.lastName}} </td>
+          <td>{{dup.email}} </td>
+          <td>{{dup.companyName}} </td>
+          <td>{{dup.address1}} </td>
+          <td>{{dup.address2}} </td>
+          <td>{{dup.zip}} </td>
+          <td>{{dup.city}} </td>
+          <td>{{dup.stateLong}} </td>
+          <td>{{dup.state}} </td>
+          <td>{{dup.phone}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
